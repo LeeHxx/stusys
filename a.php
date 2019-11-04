@@ -168,7 +168,7 @@ require_once('session.php');
           <div class="col-9">
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade active show" id="stu-add" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                <iframe width="800" height="600" frameborder="0" src="stu_add.php" name="right" scrolling="auto" noresize="noresize"></iframe>
+                <iframe width="800" height="500" frameborder="0" src="stu_add.php" name="right" scrolling="auto" noresize="noresize"></iframe>
               </div>
               <div class="tab-pane fade" id="stu-list" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <iframe width="800" height="600" frameborder="0" src="xy_list.php" name="right" scrolling="auto" noresize="noresize"></iframe>

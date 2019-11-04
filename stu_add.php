@@ -4,8 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>学生基本信息管理系统</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	
+	<link rel="stylesheet" href="css4/bootstrap.min.css">
+
 	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
 	<script type="text/javascript" src="js/logout.js"></script>
 	<script type="text/javascript">
@@ -51,19 +51,32 @@
 
 </head>
 <body>
+	<div class="container">
 	<form>
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    <div class="form-group col-6">
+      <label for="inputEmail4">姓名</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="学生姓名">
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+    <div class="form-group col-6">
+      <label for="inputPassword4">学号</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="学号">
     </div>
   </div>
+
+  <div class="form-row">
+    <div class="form-group col-6">
+      <label for="inputEmail4">班级</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="学生班级">
+    </div>
+    <div class="form-group col-6">
+      <label for="inputPassword4">专业</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="学生专业">
+    </div>
+  </div>
+
   <div class="form-group">
-    <label for="inputAddress">Address</label>
+    <label for="inputAddress">家庭住址</label>
     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
   </div>
   <div class="form-group">
@@ -97,6 +110,9 @@
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
+
+</div>
+
 	<div class="col-xs-12 col-sm-12">	
 		<div class="panel panel-default">
 			<div class="panel-heading">
