@@ -39,7 +39,7 @@ require_once('session.php');
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#">学生信息</a>
+            <a class="nav-link" data-toggle="pill" href="#stu">学生信息</a>
           </li>
         </ul>
         
@@ -144,6 +144,42 @@ require_once('session.php');
                 <iframe width="800" height="600" frameborder="0" src="xb_add.php" name="right" scrolling="auto" noresize="noresize"></iframe>
               </div>
               <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <iframe width="800" height="600" frameborder="0" src="xb_list.php" name="right" scrolling="auto" noresize="noresize"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="tab-pane fade" id="stu">
+      <div class="container">
+        <div class="row">
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#stu-add" role="tab" aria-controls="v-pills-home" aria-selected="false">添加学生</a>
+              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#stu-list" role="tab" aria-controls="v-pills-profile" aria-selected="false">学生列表</a>
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#stu-img" role="tab" aria-controls="v-pills-messages" aria-selected="true">学校招生走势图</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#stu-second" role="tab" aria-controls="v-pills-settings" aria-selected="false">二级学院招生情况</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#stu-address" role="tab" aria-controls="v-pills-settings" aria-selected="false">生源分布情况</a>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade active show" id="stu-add" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <iframe width="800" height="600" frameborder="0" src="stu_add.php" name="right" scrolling="auto" noresize="noresize"></iframe>
+              </div>
+              <div class="tab-pane fade" id="stu-list" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <iframe width="800" height="600" frameborder="0" src="xy_list.php" name="right" scrolling="auto" noresize="noresize"></iframe>
+              </div>
+              <div class="tab-pane fade " id="stu-img" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <iframe width="800" height="600" frameborder="0" src="xb_add.php" name="right" scrolling="auto" noresize="noresize"></iframe>
+              </div>
+              <div class="tab-pane fade" id="stu-second" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <iframe width="800" height="600" frameborder="0" src="xb_list.php" name="right" scrolling="auto" noresize="noresize"></iframe>
+              </div>
+              <div class="tab-pane fade" id="stu-address" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                 <iframe width="800" height="600" frameborder="0" src="xb_list.php" name="right" scrolling="auto" noresize="noresize"></iframe>
               </div>
             </div>
