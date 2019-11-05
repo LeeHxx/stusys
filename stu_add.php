@@ -108,10 +108,18 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="button" class="btn btn-primary">Sign in</button>
 </form>
 
 </div>
+
+<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="button" class="btn btn-success">添&nbsp加</button>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+
 
 	<div class="col-xs-12 col-sm-12">	
 		<div class="panel panel-default">
