@@ -14,6 +14,10 @@
 	$(".btn").click(function(){
 		var user=$("#xyid").val();
 		var passwd=$("#xy").val();
+		var user=$("#xyid").val();
+		var user=$("#xyid").val();
+		var user=$("#xyid").val();
+		var user=$("#xyid").val();
 		
 		var pattern = new RegExp("[~'!@#$%^&*()-+_=:]");
 		if(user==""){
@@ -33,14 +37,14 @@
 			$("#mm").focus();
 			return false;
 		}else{
-			$.post("add_xb.php",{zh:user,mm:passwd},function(data){
+			$.post("add_stu.php",{zh:user,mm:passwd},function(data){
 				if($.trim(data)=='yes'){
 					alert('添加成功！');
-					window.location.href='xb_add.php';
+					window.location.href='stu_add.php';
 					return true;
 				}else{
 					alert('添加失败！');
-					window.location.href='xb_add.php';
+					window.location.href='stu_add.php';
 					return false;
 				}
 			},"text");
@@ -51,6 +55,109 @@
 
 </head>
 <body>
+
+
+
+<div class="container">
+	<h3>添加学生</h3>
+				<ul class="nav nav-tabs"></ul>
+				<br>
+<form>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">姓名</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="学生姓名">
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">性别</legend>
+      <div class="col-sm-10">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="男" checked>
+          <label class="form-check-label" for="gridRadios1">
+            男
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="女">
+          <label class="form-check-label" for="gridRadios2">
+            女
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">学号</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="stuid" placeholder="学生学号">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">学院</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="stuxy">
+  <option value="">请选择...</option>
+  <option value="信息工程学院">信息工程学院</option>
+  <option value="会计与审计学院">会计与审计学院</option>
+  <option value="金融与经济学院">金融与经济学院</option>
+</select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">专业</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="stuzy" placeholder="所在专业">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">班级</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="stuclass" placeholder="所在班级">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">联系电话</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control" id="stutel" placeholder="联系电话">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">住址</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="stuaddress" placeholder="所在住址">
+    </div>
+  </div>
+
+  <div class="form-group row">
+  	<label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">确认添加</button>
+    </div>
+  </div>
+</form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
 	<div class="container">
 	<form>
   <div class="form-row">
@@ -58,6 +165,33 @@
       <label for="inputEmail4">姓名</label>
       <input type="email" class="form-control" id="inputEmail4" placeholder="学生姓名">
     </div>
+
+
+
+
+<div class="form-group col-6">
+    <label for="inputEmail4"></label>
+<div class="col-sm-10"></div>
+
+<div class="col-sm-6">
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="男" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    男
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="女">
+  <label class="form-check-label" for="exampleRadios2">
+    女
+  </label>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="form-row">
     <div class="form-group col-6">
       <label for="inputPassword4">学号</label>
       <input type="password" class="form-control" id="inputPassword4" placeholder="学号">
