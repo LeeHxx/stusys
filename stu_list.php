@@ -63,7 +63,7 @@
 					echo "<td>{$row['stuzy']}</td>";
 					echo "<td>{$row['stutel']}</td>";
 					echo "<td>
-					<form action='xb_edit.php?id={$row['id']}' method='post' class='from-1'>
+					<form action='stu_edit.php?id={$row['id']}' method='post' class='from-1'>
 					<button type='submit' class='btn btn-primary'>编辑</button>
 					</form>
 					</td>";

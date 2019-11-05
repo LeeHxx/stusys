@@ -91,8 +91,8 @@ require_once('session.php');
             <h1 class="display-4">欢迎!</h1>
             <p class="lead">欢迎进入学生信息管理系统</p>
             <hr class="my-4">
-            <p>点击下一步为管理系统添加管理员.</p>
-            <a class="btn btn-primary btn-lg" href="#gly" data-toggle="pill" role="button">下一步</a>
+            <p>点击下一步进入学生管理模块.</p>
+            <a class="btn btn-primary btn-lg" href="#stu" data-toggle="pill" role="button">下一步</a>
           </div>
         </div>
       </div>
