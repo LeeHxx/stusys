@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>学生基本信息管理系统</title>
-	<link rel="stylesheet" href="css4/bootstrap.min.css">
+	<link rel="stylesheet" href="css4/bootstrap.css">
 
 	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
 	<script type="text/javascript" src="js/logout.js"></script>
@@ -17,6 +17,7 @@
 		var stusex= $("input[name='stusex']:checked").val();
 		var stuxy=$("#stuxy").val();
 		var stuzy=$("#stuzy").val();
+		var stuyear=$("#stuyear").val();
 		var stuclass=$("#stuclass").val();
 		var stutel=$("#stutel").val();
 		var stuaddress=$("#stuaddress").val();
@@ -39,7 +40,7 @@
 			$("#stutel").focus();
 			return false;
 		}else{
-			$.post("add_stu.php?stusex="+stusex,{stuid:stuid,stuname:stuname,stusex:stusex,stuxy:stuxy,stuzy:stuzy,stuclass:stuclass,stutel:stutel,stuaddress:stuaddress},function(data){
+			$.post("add_stu.php",{stuid:stuid,stuyear:stuyear,stuname:stuname,stusex:stusex,stuxy:stuxy,stuzy:stuzy,stuclass:stuclass,stutel:stutel,stuaddress:stuaddress},function(data){
 				if($.trim(data)=='yes'){
 					alert('添加成功！');
 					window.location.href='stu_add.php';
@@ -73,7 +74,7 @@
 			</div>
 			<fieldset class="form-group">
 				<div class="row">
-					
+
 					<legend class="col-form-label col-sm-2 pt-0">性别</legend>
 					<div class="col-sm-10">
 						<form>
@@ -98,6 +99,21 @@
 				<label for="inputEmail3" class="col-sm-2 col-form-label">学号</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="stuid" placeholder="学生学号">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="inputEmail3" class="col-sm-2 col-form-label">入学年份</label>
+				<div class="col-sm-10">
+					<select class="form-control" id="stuyear">
+						<option value="">请选择...</option>
+						<option value="2015">2015</option>
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019">2019</option>
+						<option value="2020">2020</option>
+					</select>
 				</div>
 			</div>
 
@@ -144,7 +160,7 @@
 			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 col-form-label"></label>
 				<div class="col-sm-10">
-					<button type="button" class="btn btn-primary">确认添加</button>
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>确认添加</button>
 				</div>
 			</div>
 		</form>

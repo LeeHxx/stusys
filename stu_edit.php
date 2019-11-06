@@ -75,7 +75,7 @@ $sql_arr = mysqli_fetch_assoc($result);
 
 
 	<div class="container">
-		<h3>添加学生</h3>
+		<h3>编辑学生</h3>
 		<ul class="nav nav-tabs"></ul>
 		<br>
 		<form>
@@ -164,7 +164,10 @@ $sql_arr = mysqli_fetch_assoc($result);
 			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 col-form-label"></label>
 				<div class="col-sm-10">
+					<form action="stu_list.php">
 					<button type="button" class="btn btn-primary">确认添加</button>
+					<button type="submit" class="btn btn-primary">返回</button>	
+				</form>
 				</div>
 			</div>
 		</form>
