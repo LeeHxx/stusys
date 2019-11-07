@@ -155,7 +155,7 @@ $num3=mysqli_num_rows($result3);
                     <i class="material-icons">&#xE7FD;</i>管理员</a>
                     
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#">
+                    <a class="dropdown-item text-danger" href="login.php">
                       <i class="material-icons text-danger">&#xE879;</i> 退出 </a>
                     </div>
                 </li>

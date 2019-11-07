@@ -43,7 +43,7 @@ $(document).ready(function(){
 			$.post("login_check.php",{user:user,passwd:passwd},function(data){
 				if($.trim(data)=='yes'){
 					alert('登录成功！');
-					window.location.href='a.php';
+					window.location.href='add.php';
 					return true;
 				}else{
 					alert('你输入的账号或密码不正确！');
