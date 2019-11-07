@@ -6,7 +6,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Shards Dashboard Lite - Free Bootstrap Admin Template – DesignRevision</title>
+  <title>信息管理系统</title>
   <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="css/all.css" rel="stylesheet">
@@ -16,26 +16,68 @@ session_start();
   <link rel="stylesheet" href="styles/extras.1.1.0.min.css">
   <script src="js/buttons.js"></script>
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript">
-    function del (id) {
-      if (confirm("确定删除吗？")){
-        $.post("del_stu.php?id="+id,function(data){
-          if($.trim(data)=='yes'){
-            alert('删除成功！');
-            window.location.href='list.php';
-            return true;
-          }else{
-            alert('删除失败！');
-            window.location.href='list.php';
-            return false;
-          }
-        },"text");
-      }
-    }
-    
-  </script>
+  <script src="js/Chart.min.js"></script>
+  <script src="js/utils.js"></script>
+
 </head>
 <body class="h-100">
+
+
+
+  <?php
+  session_start();
+  require_once('conn.php');
+
+//将查询语句赋给变量$sql
+  $sql1="select * from stu where jg='南京市' ";
+  $sql2="select * from stu where jg='徐州市' ";
+  $sql3="select * from stu where jg='无锡市' ";
+  $sql4="select * from stu where jg='苏州市' ";
+  $sql5="select * from stu where jg='淮安市' ";
+  $sql6="select * from stu where jg='运城市' ";
+  $sql7="select * from stu where jg='常州市' ";
+  $sql8="select * from stu where jg='宿迁市' ";
+  $sql9="select * from stu where jg='泰州市' ";
+  
+//执行sql语
+//mysqli_query($conn,$sql) or die('添加数据出错：'.mysql_error());
+  $result1=mysqli_query($conn,$sql1);
+  $nj=mysqli_num_rows($result1);
+  $result2=mysqli_query($conn,$sql2);
+  $xz=mysqli_num_rows($result2);
+  $result3=mysqli_query($conn,$sql3);
+  $wu=mysqli_num_rows($result3);
+  $result4=mysqli_query($conn,$sql4);
+  $sz=mysqli_num_rows($result4);
+  $result5=mysqli_query($conn,$sql5);
+  $ha=mysqli_num_rows($result5);
+  $result6=mysqli_query($conn,$sql6);
+  $yc=mysqli_num_rows($result6);
+  $result7=mysqli_query($conn,$sql7);
+  $cz=mysqli_num_rows($result7);
+  $result8=mysqli_query($conn,$sql8);
+  $sq=mysqli_num_rows($result8);
+  $result9=mysqli_query($conn,$sql9);
+  $tz=mysqli_num_rows($result9);
+
+
+
+
+
+
+
+  ?>
+
+  <input type="hidden" class="form-control" id="nj" value="<?php echo $nj; ?>">
+  <input type="hidden" class="form-control" id="xz" value="<?php echo $xz; ?>">
+  <input type="hidden" class="form-control" id="wu" value="<?php echo $wu; ?>">
+  <input type="hidden" class="form-control" id="sz" value="<?php echo $sz; ?>">
+  <input type="hidden" class="form-control" id="ha" value="<?php echo $ha; ?>">
+  <input type="hidden" class="form-control" id="yc" value="<?php echo $yc; ?>">
+  <input type="hidden" class="form-control" id="cz" value="<?php echo $cz; ?>">
+  <input type="hidden" class="form-control" id="sq" value="<?php echo $sq; ?>">
+  <input type="hidden" class="form-control" id="tz" value="<?php echo $tz; ?>">
+
 
 
   <div class="container-fluid">
@@ -82,7 +124,7 @@ session_start();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link  active" href="edit.php">
+                <a class="nav-link " href="edit.php">
                   <i class="material-icons">edit</i>
                   <span>查询与修改</span>
                 </a>
@@ -94,7 +136,7 @@ session_start();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="b.php">
+                <a class="nav-link  active" href="b.php">
                   <i class="material-icons">supervisor_account</i>
                   <span>生源分布情况</span>
                 </a>
@@ -166,7 +208,7 @@ session_start();
               <div class="page-header row no-gutters py-4">
                 <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                   <span class="text-uppercase page-subtitle">Student</span>
-                  <h3 class="page-title">查询与修改</h3>
+                  <h3 class="page-title">生源分布情况</h3>
                 </div>
               </div>
 
@@ -175,133 +217,109 @@ session_start();
 
 
 
-              <div class="card card-small mb-4">
-                  <div class="card-header border-bottom">
-                    <h6 class="m-0">查询</h6>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item px-3">
-                      <form action="edit-s.php?findid=findid">
-                        
-                        <br>
-                        <div class="input-group mb-3">
-                          <span class="input-group-prepend">
-                              <span class="input-group-text">
-                                <i class="material-icons">person</i>
-                              </span>
-                            </span>
+              <div class="row">
 
-                          <input type="text" class="form-control" name="findid" placeholder="输入学号查找学生" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                          <div class="input-group-append">
-
-                            <button class="btn btn-white" type="submit"><i class="material-icons">search</i>&nbsp;&nbsp;查询</button>
-                          </div>
-                        </div>
-                        <!-- / Input/Button Group -->
-                        <!-- Input/Button Group 
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <button class="btn btn-white" type="button">Button</button>
-                          </div>
-                          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> </div>
-                        <!-- / Input/Button Group -->
-                      </form>
-                    </li>
-                  </ul>
-                </div>
-
-
-
-
-
-                <div class="row">
-              <div class="col">
-                <div class="card card-small mb-4">
-                  <div class="card-header border-bottom">
-                    <h6 class="m-0">查询结果</h6>
-                  </div>
-                  <div class="card-body p-0 pb-3 text-center">
-                    <table class="table mb-0">
-                      <thead class="bg-light">
-                        <tr>
-                          <th scope="col" class="border-0">#</th>
-                          <th scope="col" class="border-0">姓名</th>
-                          <th scope="col" class="border-0">班级</th>
-                          <th scope="col" class="border-0">学号</th>
-                          <th scope="col" class="border-0">学院</th>
-                          <th scope="col" class="border-0"></th>
-                          <th scope="col" class="border-0"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-
-        session_start();
-        require_once('conn.php');
-
-
-            $stuid = $_GET['findid'];
-            $sql="select * from stu where stuid='$stuid' or stuid like '%,$stuid' or stuid like '%,$stuid,%' or stuid like '$stuid,%'";
-             
-            
-        $result=mysqli_query($conn,$sql);      
-        if($result){
-$num=mysqli_num_rows($result);
-        
-        for($i=0; $i<$num; $i++){
-          $row = mysqli_fetch_assoc($result);
-          echo "<tr>";
-          echo "<th scope='row'>{$row['id']}</th>";
-          echo "<td>{$row['stuname']}</td>";
-          echo "<td>{$row['stuclass']}</td>";
-          echo "<td>{$row['stuid']}</td>";
-          echo "<td>{$row['stuxy']}</td>";
-          echo "<td>
-              <form action='edit-s-s.php?id={$row['id']}' method='post' class='from-1'>
-              <button type='submit' class='mb-2 btn btn-sm btn-outline-primary mr-1'>编辑</button>
-              
-              </form>
-              </td>";
-              echo "<td>
-              <form action='javascript:del({$row['id']})' method='post'>
-              <button type='submit' class='mb-2 btn btn-sm btn-outline-danger mr-1'>删除</button>
-              </form>
-              </td>";                 
-          echo "</tr>";
-        }               
-        }
-        mysqli_close($conn);
-        ?>
-                      </tbody>
-                    </table>
+                <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                  <div class="card card-small h-100">
+                    <div class="card-header border-bottom">
+                      <h6 class="m-0">二级学院招生情况</h6>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="card-body d-flex pt-0">
+                      <canvas id="canvas" style="display: block; width: 820px; height: 410px;" width="820" height="410" class="chartjs-render-monitor"></canvas>
+                    </div> 
                   </div>
                 </div>
+
+
               </div>
-            </div>
+              </div>
+              <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
 
-
-
-
-
-
-
-
-            </div>
-            <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
-
-              <span class="copyright ml-auto my-auto mr-2">Copyright © 2019    </span>
-            </footer>
-          </main>
+                <span class="copyright ml-auto my-auto mr-2">Copyright © 2019    </span>
+              </footer>
+            </main>
+          </div>
         </div>
-      </div>
-      <script src="js/jquery-3.3.1.min.js"></script>
-      <script src="js/popper.min.js" ></script>
-      <script src="js/bootstrap.min.js" ></script>
-      <script src="js/Chart.min.js"></script>
-      <script src="js/shards.min.js"></script>
-      <script src="js/jquery.sharrre.min.js"></script>
-      <script src="scripts/extras.1.1.0.min.js"></script>
-      <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
-      <script src="scripts/app/app-blog-overview.1.1.0.js"></script>
-    </body>
-    </html>
+
+
+        <script>
+    var nj=$("#nj").val();
+    var xz=$("#xz").val();
+    var wu=$("#wu").val();
+    var sz=$("#sz").val();
+    var ha=$("#ha").val();
+    var yc=$("#yc").val();
+    var cz=$("#cz").val();
+    var sq=$("#sq").val();
+    var tz=$("#tz").val();
+
+
+
+    var color = Chart.helpers.color;
+    var barChartData = {
+      labels: ['南京市', '徐州市', '无锡市', '苏州市', '淮安市', '运城', '常州市', '宿迁市', '泰州市'],
+      datasets: [{
+        label: '人数',
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)","rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)"],
+        borderColor:  ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)","rgb(255, 99, 132)","rgb(255, 159, 64)"],
+        borderWidth: 1,
+        data: [
+        nj,
+        xz,
+        wu,
+        sz,
+        ha,
+        yc,
+        cz,
+        sq,
+        tz
+        ]
+      }]
+
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('canvas').getContext('2d');
+      window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+          responsive: true,
+          legend: {
+            position: 'top',
+          },
+          "scales": {
+            "yAxes": [{
+              "ticks": {
+                "beginAtZero": true
+              }
+            }]
+          }
+        }
+        
+      });
+
+    };
+
+    
+  
+  </script>
+
+<script>new Chart(document.getElementById("chartjs-1"),{"type":"bar","data":{"labels":["January","February","March","April","May","June","July"],"datasets":[{"label":"My First Dataset","data":[65,59,80,81,56,55,40],"fill":false,"backgroundColor":["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)","rgba(201, 203, 207, 0.2)"],"borderColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"],"borderWidth":1}]},"options":{"scales":{"yAxes":[{"ticks":{"beginAtZero":true}}]}}});</script>
+
+
+
+
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js" ></script>
+        <script src="js/bootstrap.min.js" ></script>
+
+        <script src="js/shards.min.js"></script>
+        <script src="js/jquery.sharrre.min.js"></script>
+        <script src="scripts/extras.1.1.0.min.js"></script>
+        <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
+
+      </body>
+      </html>

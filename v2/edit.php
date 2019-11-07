@@ -76,7 +76,7 @@ session_start();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="a.php">
+                <a class="nav-link " href="b.php">
                   <i class="material-icons">supervisor_account</i>
                   <span>生源分布情况</span>
                 </a>

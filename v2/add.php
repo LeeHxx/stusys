@@ -29,26 +29,42 @@ session_start();
     var stuaddress=$("#stuaddress").val();
     var jg=$("#jg").val();
     var other=$("#other").val();
-    
+    var stusex=$("#stusex").val();
     var pattern = new RegExp("[~'!@#$%^&*()-+_=:]");
-    if(stuid==""){
-      alert("请输入学号！");
-      $("#stuid").focus();
+    if(stuname==""){
+      alert("请输入姓名！");
+      $("#stuname").focus();
       return false;
     }else if(pattern.test(stuname)){
       alert("温馨提示：名称中含有非法字符，请重新输入！");
       $("#stuname").focus();
       return false;
-    }else if(stuname==""){
-      alert('请输入姓名!');
-      $("#stuname").focus();
+    }else if(stuid==""){
+      alert('请输入学号!');
+      $("#stuid").focus();
+      return false;
+    }else if(stuxy==""){
+      alert('请选择学院!');
+      $("#stuxy").focus();
+      return false;
+    }else if(stusex==""){
+      alert('请选择性别!');
+      $("#stusex").focus();
+      return false;
+    }else if(stuyear==""){
+      alert('请选择入学年份!');
+      $("#stuyear").focus();
+      return false;
+    }else if(jg==""){
+      alert('请选择籍贯!');
+      $("#jg").focus();
       return false;
     }else if(pattern.test(stutel)){
       alert("温馨提示：名称中含有非法字符，请重新输入！");
       $("#stutel").focus();
       return false;
     }else{
-      $.post("add_stu.php",{stuid:stuid,stuyear:stuyear,stuname:stuname,stuxy:stuxy,stuclass:stuclass,stutel:stutel,stuaddress:stuaddress,jg:jg,other:other},function(data){
+      $.post("add_stu.php",{stuid:stuid,stusex:stusex,stuyear:stuyear,stuname:stuname,stuxy:stuxy,stuclass:stuclass,stutel:stutel,stuaddress:stuaddress,jg:jg,other:other},function(data){
         if($.trim(data)=='yes'){
           
           window.location.href='add-s.php';
@@ -123,7 +139,7 @@ session_start();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="a.php">
+                <a class="nav-link " href="b.php">
                   <i class="material-icons">supervisor_account</i>
                   <span>生源分布情况</span>
                 </a>
@@ -237,14 +253,24 @@ session_start();
                                 </select>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="fePassword">班级</label>
-                                <input type="text" class="form-control" id="stuclass" placeholder="几班的？">
+                                <label for="fePassword">性别</label>
+                                <select id="stusex" class="form-control">
+                                  <option value="" selected>请选择...</option>
+                                  <option value="女">女</option>
+                                  <option value="男">男</option>                                 
+                                </select>
                               </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-row">
+                            <div class="form-group col-md-6">
                               <label for="feInputAddress">家庭住址</label>
                               <input type="text" class="form-control" id="stuaddress" placeholder="住哪？">
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="fePassword">班级</label>
+                                <input type="text" class="form-control" id="stuclass" placeholder="几班的？">
+                              </div>
+                          </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feInputCity">联系电话</label>
