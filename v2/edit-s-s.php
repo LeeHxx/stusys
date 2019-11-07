@@ -19,7 +19,7 @@ session_start();
   <script type="text/javascript">
     $(document).ready(function(){
   //当单击登录按钮时触发的事件
-  $(".btn").click(function(){
+  $("#btn1").click(function(){
     var stuname=$("#stuname").val();
     var stuid=$("#stuid").val();
     var stuxy=$("#stuxy").val();
@@ -66,6 +66,18 @@ session_start();
 </head>
 <body class="h-100">
 
+<?php
+session_start();
+require_once('conn.php');
+$id = $_GET['id'];
+//将查询语句赋给变量$sql
+$sql="select * from stu where id={$id}";
+//执行sql语
+//mysqli_query($conn,$sql) or die('添加数据出错：'.mysql_error());
+$result=mysqli_query($conn,$sql);
+$sql_arr = mysqli_fetch_assoc($result);
+?>
+
 
   <div class="container-fluid">
     <div class="row">
@@ -99,7 +111,7 @@ session_start();
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link  active" href="add.php">
+                <a class="nav-link " href="add.php">
                   <i class="material-icons">note_add</i>
                   <span>添加学生</span>
                 </a>
@@ -111,7 +123,7 @@ session_start();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="edit.php">
+                <a class="nav-link  active" href="edit.php">
                   <i class="material-icons">edit</i>
                   <span>查询与修改</span>
                 </a>
@@ -192,12 +204,7 @@ session_start();
               </nav>
             </div>
             <!-- / .main-navbar -->
-            <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-            <i class="material-icons">done_outline</i>
-            <strong>Success!</strong> 学生信息添加成功! </div>
+            
          
             
 
@@ -207,7 +214,7 @@ session_start();
               <div class="page-header row no-gutters py-4">
                 <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                   <span class="text-uppercase page-subtitle">Student</span>
-                  <h3 class="page-title">添加学生</h3>
+                  <h3 class="page-title">编辑学生</h3>
                 </div>
               </div>
 
@@ -220,7 +227,7 @@ session_start();
                     <li class="list-group-item p-3">
                       <div class="row">
                         <div class="col">
-                          <form>
+                          <form action="edit.php">
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="FirstName">学生姓名</label>
@@ -243,7 +250,7 @@ session_start();
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="fePassword">班级</label>
-                                <input type="password" class="form-control" id="stuclass" placeholder="几班的？">
+                                <input type="text" class="form-control" id="stuclass" placeholder="几班的？">
                               </div>
                             </div>
                             <div class="form-group">
@@ -288,7 +295,10 @@ session_start();
                                 <input type="text" class="form-control" id="other" placeholder="备注...">
                               </div>
                             </div>
-                            <button type="button" class="btn btn-accent">确认添加</button>
+                            <button id="btn1" type="button" class="btn btn-accent">确认添加</button>
+                            <form action="edit.php">
+                            <button type="submit" class="btn btn-accent">返回</button>
+                            </form>
                           </form>
                         </div>
                       </div>

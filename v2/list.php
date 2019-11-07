@@ -64,7 +64,7 @@ session_start();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="a.php">
+                <a class="nav-link " href="edit.php">
                   <i class="material-icons">edit</i>
                   <span>查询与修改</span>
                 </a>

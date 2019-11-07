@@ -234,7 +234,7 @@
           'rgba(0,123,255,0.3)'
         ]
       }],
-      labels: ["Desktop", "Tablet", "Mobile"]
+      labels: ["信息工程学院", "Tablet", "Mobile"]
     };
 
     // Options
