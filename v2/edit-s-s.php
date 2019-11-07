@@ -20,6 +20,7 @@ session_start();
     $(document).ready(function(){
   //当单击登录按钮时触发的事件
   $("#btn1").click(function(){
+    var id=$("#id").val();
     var stuname=$("#stuname").val();
     var stuid=$("#stuid").val();
     var stuxy=$("#stuxy").val();
@@ -48,14 +49,14 @@ session_start();
       $("#stutel").focus();
       return false;
     }else{
-      $.post("add_stu.php",{stuid:stuid,stuyear:stuyear,stuname:stuname,stuxy:stuxy,stuclass:stuclass,stutel:stutel,stuaddress:stuaddress,jg:jg,other:other},function(data){
+      $.post("edit-stu.php",{id:id,stuid:stuid,stuyear:stuyear,stuname:stuname,stuxy:stuxy,stuclass:stuclass,stutel:stutel,stuaddress:stuaddress,jg:jg,other:other},function(data){
         if($.trim(data)=='yes'){
-          
-          window.location.href='add-s.php';
+          alert('修改成功！');
+          window.location.href='list.php';
           return true;
         }else{
-          alert('添加失败！');
-          window.location.href='add.php';
+          alert('修改失败！');
+          window.location.href='list.php';
           return false;
         }
       },"text");
@@ -70,6 +71,7 @@ session_start();
 session_start();
 require_once('conn.php');
 $id = $_GET['id'];
+
 //将查询语句赋给变量$sql
 $sql="select * from stu where id={$id}";
 //执行sql语
@@ -227,15 +229,16 @@ $sql_arr = mysqli_fetch_assoc($result);
                     <li class="list-group-item p-3">
                       <div class="row">
                         <div class="col">
-                          <form action="edit.php">
-                            <div class="form-row">
+                          <form>
+                            <div class="form-row">                             
                               <div class="form-group col-md-6">
                                 <label for="FirstName">学生姓名</label>
-                                <input type="text" class="form-control" id="stuname" placeholder="叫啥？" value="">
+                                <input type="text" class="form-control" id="stuname" placeholder="叫啥？" value="<?php echo $sql_arr['stuname']?>">
+                                <input type="hidden" class="form-control" id="id" placeholder="叫啥？" value="<?php echo $sql_arr['id']?>">
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="feLastName">学生学号</label>
-                                <input type="text" class="form-control" id="stuid" placeholder="学号？"  >
+                                <input type="text" class="form-control" id="stuid" placeholder="学号？"  value="<?php echo $sql_arr['stuid']?>">
                               </div>
                             </div>
                             <div class="form-row">
@@ -250,17 +253,17 @@ $sql_arr = mysqli_fetch_assoc($result);
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="fePassword">班级</label>
-                                <input type="text" class="form-control" id="stuclass" placeholder="几班的？">
+                                <input type="text" class="form-control" id="stuclass" placeholder="几班的？" value="<?php echo $sql_arr['stuclass']?>">
                               </div>
                             </div>
                             <div class="form-group">
                               <label for="feInputAddress">家庭住址</label>
-                              <input type="text" class="form-control" id="stuaddress" placeholder="住哪？">
+                              <input type="text" class="form-control" id="stuaddress" placeholder="住哪？" value="<?php echo $sql_arr['stuaddress']?>">
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feInputCity">联系电话</label>
-                                <input type="text" class="form-control" id="stutel" placeholder="1xx-xxxx-xxxx">
+                                <input type="text" class="form-control" id="stutel" placeholder="1xx-xxxx-xxxx" value="<?php echo $sql_arr['stutel']?>">
                               </div>
                               <div class="form-group col-md-4">
                                 <label for="feInputState">入学年份</label>
@@ -292,10 +295,10 @@ $sql_arr = mysqli_fetch_assoc($result);
                             <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label for="feDescription">其他</label>
-                                <input type="text" class="form-control" id="other" placeholder="备注...">
+                                <input type="text" class="form-control" id="other" placeholder="备注..." value="<?php echo $sql_arr['other']?>">
                               </div>
                             </div>
-                            <button id="btn1" type="button" class="btn btn-accent">确认添加</button>
+                            <button id="btn1" type="button" class="btn btn-accent">确认修改</button>
                             <form action="edit.php">
                             <button type="submit" class="btn btn-accent">返回</button>
                             </form>

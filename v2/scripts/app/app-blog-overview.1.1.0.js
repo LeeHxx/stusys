@@ -227,14 +227,14 @@
     var ubdData = {
       datasets: [{
         hoverBorderColor: '#ffffff',
-        data: [68.3, 24.2, 7.5],
+        data: [6, 3, 7.5],
         backgroundColor: [
           'rgba(0,123,255,0.9)',
           'rgba(0,123,255,0.5)',
           'rgba(0,123,255,0.3)'
         ]
       }],
-      labels: ["信息工程学院", "Tablet", "Mobile"]
+      labels: ["信息工程学院", "会计与审计学院", "金融与经济学院"]
     };
 
     // Options
